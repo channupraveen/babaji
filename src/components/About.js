@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useInView } from "./useInView";
 import OmDivider from "./OmDivider";
 
@@ -10,16 +11,17 @@ export default function About() {
       <div ref={ref} className="max-w-[1100px] mx-auto">
         {vis && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-            {/* Image Placeholder */}
+            {/* Babaji Image */}
             <div className="animate-slide-left rounded-2xl overflow-hidden relative max-h-[520px] shadow-[0_20px_60px_rgba(61,43,31,0.15)]"
-              style={{ aspectRatio: "4/5", background: "linear-gradient(135deg, #e8d5b7, #d4a574, #c89b6e)" }}
+              style={{ aspectRatio: "4/5" }}
             >
-              {/* Watermark */}
-              <div className="absolute inset-0 flex items-center justify-center"
-                style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.15) 100%)" }}
-              >
-                <span className="text-[120px] text-white/20 font-display">ॐ</span>
-              </div>
+              <Image
+                src="/babaji.jpeg"
+                alt="Shree Babaji — Light of Divine Wisdom"
+                fill
+                className="object-cover object-top"
+                priority
+              />
               {/* Caption */}
               <div className="absolute bottom-0 left-0 right-0 px-6 pb-5 pt-8 bg-gradient-to-t from-earth-700/70 to-transparent">
                 <p className="text-white/90 font-display text-lg italic">
@@ -27,8 +29,8 @@ export default function About() {
                 </p>
               </div>
               {/* Corner decorations */}
-              <div className="absolute top-4 left-4 w-[60px] h-[60px] border-t-[3px] border-l-[3px] border-white/30 rounded-tl" />
-              <div className="absolute bottom-4 right-4 w-[60px] h-[60px] border-b-[3px] border-r-[3px] border-white/30 rounded-br" />
+              <div className="absolute top-4 left-4 w-[60px] h-[60px] border-t-[3px] border-l-[3px] border-white/30 rounded-tl z-10" />
+              <div className="absolute bottom-4 right-4 w-[60px] h-[60px] border-b-[3px] border-r-[3px] border-white/30 rounded-br z-10" />
             </div>
 
             {/* Text */}
