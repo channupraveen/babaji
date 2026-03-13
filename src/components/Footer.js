@@ -5,7 +5,7 @@ const QUICK_LINKS = [
   { label: "Annadanam", href: "#annadanam" },
   { label: "Services", href: "#services" },
   { label: "Events", href: "#events" },
-  { label: "Gallery", href: "#gallery" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const DONATION_LINKS = [

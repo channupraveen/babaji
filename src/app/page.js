@@ -7,7 +7,6 @@ import Programs from "@/components/Programs";
 import Testimonials from "@/components/Testimonials";
 import Donations from "@/components/Donations";
 import Events from "@/components/Events";
-import Gallery from "@/components/Gallery";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -23,7 +22,6 @@ export default function Home() {
       <Testimonials />
       <Donations />
       <Events />
-      <Gallery />
       <Contact />
       <Footer />
     </main>
