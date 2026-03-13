@@ -1,14 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { label: "Home", href: "#hero" },
-  { label: "About Babaji", href: "#about" },
-  { label: "Ashram", href: "#visit" },
-  { label: "Programs", href: "#programs" },
-  { label: "Visit", href: "#visit" },
-  { label: "Donations", href: "#donate" },
-  { label: "Contact", href: "#footer" },
+  { label: "About Us", href: "#about" },
+  { label: "Annadanam", href: "#annadanam" },
+  { label: "Services", href: "#services" },
+  { label: "Events", href: "#events" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -21,7 +21,6 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close menu on resize to desktop
   useEffect(() => {
     const onResize = () => { if (window.innerWidth > 900) setMenuOpen(false); };
     window.addEventListener("resize", onResize);
@@ -33,23 +32,24 @@ export default function Navbar() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
         scrolled
           ? "bg-cream-100/[0.97] shadow-[0_2px_20px_rgba(61,43,31,0.08)] border-b border-saffron-500/10"
-          : "bg-black/[0.15] border-b border-white/10"
+          : "bg-white/[0.95] border-b border-saffron-500/10"
       }`}
       style={{ backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
     >
       <div className="max-w-[1280px] mx-auto px-6 flex items-center justify-between h-[72px]">
         {/* Logo */}
         <a href="#hero" className="flex items-center gap-2.5 no-underline">
-          <div className="w-[42px] h-[42px] rounded-full bg-gradient-to-br from-saffron-500 to-gold-500 flex items-center justify-center shadow-[0_2px_12px_rgba(212,119,44,0.3)]">
-            <span className="text-white text-[22px] font-display font-bold">ॐ</span>
+          <div className="w-[44px] h-[44px] rounded-full overflow-hidden border-2 border-saffron-500/30 shadow-[0_2px_12px_rgba(212,119,44,0.2)] shrink-0">
+            <Image src="/logo.jpg" alt="Ravi Swamy Foundation" width={44} height={44} className="object-cover w-full h-full" />
           </div>
-          <span
-            className={`font-display font-bold text-[22px] tracking-wide transition-colors duration-400 ${
-              scrolled ? "text-earth-700" : "text-white"
-            }`}
-          >
-            Shree Babaji
-          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="font-display font-bold text-[17px] text-earth-700 tracking-wide">
+              Ravi Swamy
+            </span>
+            <span className="font-sans text-[10px] text-saffron-500 tracking-[2px] uppercase font-bold">
+              Foundation
+            </span>
+          </div>
         </a>
 
         {/* Desktop Nav */}
@@ -58,31 +58,33 @@ export default function Navbar() {
             <a
               key={link.label}
               href={link.href}
-              className={`px-3.5 py-2 rounded-lg text-sm font-sans font-semibold tracking-wide transition-all duration-300 no-underline
-                ${scrolled
-                  ? "text-earth-500 hover:text-saffron-500 hover:bg-saffron-500/[0.08]"
-                  : "text-white/90 hover:text-white hover:bg-white/[0.12]"
-                }`}
+              className="px-3.5 py-2 rounded-lg text-sm font-sans font-semibold tracking-wide transition-all duration-300 no-underline text-earth-500 hover:text-saffron-500 hover:bg-saffron-500/[0.08]"
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        {/* Mobile Hamburger */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className={`lg:hidden bg-transparent border-none cursor-pointer p-2 text-[28px] transition-colors ${
-            scrolled ? "text-earth-700" : "text-white"
-          }`}
-        >
-          {menuOpen ? "✕" : "☰"}
-        </button>
+        {/* Donate Button + Hamburger */}
+        <div className="flex items-center gap-3">
+          <a
+            href="#donate"
+            className="hidden sm:inline-block px-5 py-2.5 rounded-full bg-gradient-to-br from-saffron-500 to-saffron-600 text-white font-sans font-bold text-[13px] tracking-wide no-underline shadow-[0_3px_14px_rgba(212,119,44,0.35)] hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(212,119,44,0.45)] transition-all duration-300"
+          >
+            Donate Now
+          </a>
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="lg:hidden bg-transparent border-none cursor-pointer p-2 text-[28px] text-earth-700 transition-colors"
+          >
+            {menuOpen ? "✕" : "☰"}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Dropdown */}
       {menuOpen && (
-        <div className="lg:hidden bg-cream-100/[0.98] px-6 pb-6 pt-2 border-t border-saffron-500/10 animate-fade-in"
+        <div className="lg:hidden bg-cream-100/[0.98] px-6 pb-6 pt-2 border-t border-saffron-500/10"
           style={{ backdropFilter: "blur(20px)" }}
         >
           {NAV_LINKS.map((link) => (
@@ -95,6 +97,13 @@ export default function Navbar() {
               {link.label}
             </a>
           ))}
+          <a
+            href="#donate"
+            onClick={() => setMenuOpen(false)}
+            className="block mt-4 text-center py-3 rounded-full bg-gradient-to-br from-saffron-500 to-saffron-600 text-white font-sans font-bold text-base no-underline"
+          >
+            Donate Now
+          </a>
         </div>
       )}
     </nav>

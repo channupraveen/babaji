@@ -1,10 +1,25 @@
-const QUICK_LINKS = ["About Babaji", "Teachings", "Programs", "Gallery"];
-const VISIT_LINKS = ["Visit Ashram", "Meditation", "Retreats", "Donations"];
+import Image from "next/image";
+
+const QUICK_LINKS = [
+  { label: "About Us", href: "#about" },
+  { label: "Annadanam", href: "#annadanam" },
+  { label: "Services", href: "#services" },
+  { label: "Events", href: "#events" },
+  { label: "Gallery", href: "#gallery" },
+];
+
+const DONATION_LINKS = [
+  { label: "₹500 — Feed a Devotee", href: "#donate" },
+  { label: "₹1100 — Annadanam Seva", href: "#donate" },
+  { label: "₹5000 — Sponsor Meals", href: "#donate" },
+  { label: "Volunteer With Us", href: "#contact" },
+];
+
 const SOCIAL = [
   { icon: "𝕏", label: "Twitter" },
   { icon: "f", label: "Facebook" },
-  { icon: "in", label: "LinkedIn" },
   { icon: "▶", label: "YouTube" },
+  { icon: "📷", label: "Instagram" },
 ];
 
 export default function Footer() {
@@ -16,16 +31,21 @@ export default function Footer() {
           {/* Col 1 - About */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-saffron-500 to-gold-500 flex items-center justify-center">
-                <span className="text-white text-xl font-display">ॐ</span>
+              <div className="w-[42px] h-[42px] rounded-full overflow-hidden border-2 border-saffron-500/40 shrink-0">
+                <Image src="/logo.jpg" alt="Ravi Swamy Foundation" width={42} height={42} className="object-cover w-full h-full" />
               </div>
-              <span className="font-display text-white text-[22px] font-bold">
-                Shree Babaji
-              </span>
+              <div>
+                <span className="font-display text-white text-[18px] font-bold block leading-tight">
+                  Ravi Swamy
+                </span>
+                <span className="font-sans text-saffron-400 text-[10px] tracking-[2px] uppercase font-bold">
+                  Foundation
+                </span>
+              </div>
             </div>
-            <p className="font-body text-[15px] leading-[1.8] text-white/50 max-w-[320px] mb-5">
-              Guiding humanity toward inner peace, self-realization, and universal
-              love through timeless spiritual wisdom and compassionate service.
+            <p className="font-body text-[15px] leading-[1.8] text-white/50 max-w-[280px] mb-5">
+              Serving humanity through Annadanam, spiritual guidance, and
+              humanitarian service. Manava Seva is Madhava Seva.
             </p>
             {/* Social */}
             <div className="flex gap-2.5">
@@ -49,27 +69,27 @@ export default function Footer() {
             </h4>
             {QUICK_LINKS.map((l) => (
               <a
-                key={l}
-                href="#"
+                key={l.label}
+                href={l.href}
                 className="block text-white/50 text-[15px] font-sans no-underline mb-2.5 hover:text-saffron-400 transition-colors duration-300"
               >
-                {l}
+                {l.label}
               </a>
             ))}
           </div>
 
-          {/* Col 3 - Visit */}
+          {/* Col 3 - Donations */}
           <div>
             <h4 className="text-white font-sans font-bold text-sm tracking-[1px] uppercase mb-5">
-              Visit Us
+              Donate / Seva
             </h4>
-            {VISIT_LINKS.map((l) => (
+            {DONATION_LINKS.map((l) => (
               <a
-                key={l}
-                href="#"
+                key={l.label}
+                href={l.href}
                 className="block text-white/50 text-[15px] font-sans no-underline mb-2.5 hover:text-saffron-400 transition-colors duration-300"
               >
-                {l}
+                {l.label}
               </a>
             ))}
           </div>
@@ -80,24 +100,30 @@ export default function Footer() {
               Contact
             </h4>
             <p className="text-[15px] text-white/50 font-sans mb-2.5">
-              📍 Sacred Valley, Himalayas, Uttarakhand, India
+              📍 Kalaburagi, Karnataka, India
             </p>
             <p className="text-[15px] text-white/50 font-sans mb-2.5">
-              📧 blessings@shreebabaji.org
+              📧 info@raviswamyfoundation.org
             </p>
-            <p className="text-[15px] text-white/50 font-sans">
-              📞 +91 98765 43210
+            <p className="text-[15px] text-white/50 font-sans mb-5">
+              📞 8747802991
             </p>
+            <a
+              href="#donate"
+              className="inline-block px-5 py-2.5 rounded-full bg-gradient-to-br from-saffron-500 to-saffron-600 text-white font-sans font-bold text-[13px] no-underline shadow-[0_3px_14px_rgba(212,119,44,0.3)] hover:-translate-y-0.5 transition-all duration-300"
+            >
+              Donate Now 🙏
+            </a>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-white/[0.08] py-6 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-[13px] text-white/35 font-sans">
-            © 2026 Shree Babaji Ashram. All rights reserved.
+            © 2026 Ravi Swamy Foundation. All rights reserved.
           </p>
           <p className="text-[13px] text-white/35 font-sans">
-            Made with 🙏 and devotion
+            Made with 🙏 and devotion · Kalaburagi
           </p>
         </div>
       </div>

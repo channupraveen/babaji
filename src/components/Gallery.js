@@ -3,18 +3,18 @@ import { useInView } from "./useInView";
 import OmDivider from "./OmDivider";
 
 const GALLERY_ITEMS = [
-  { label: "Ashram at Dawn", gradient: "from-[#e8d5b7] via-[#d4a574] to-[#c89b6e]", wide: true },
-  { label: "Meditation Hall", gradient: "from-[#7a8b6f] via-[#5a6b4f] to-[#4a5b3f]", wide: false },
-  { label: "Sacred Grounds", gradient: "from-[#a8c4d4] via-[#88a4b4] to-[#6884a4]", wide: false },
-  { label: "Spiritual Gathering", gradient: "from-[#c4917b] via-[#b4816b] to-[#a4715b]", wide: false },
-  { label: "Nature & Serenity", gradient: "from-[#8bc48a] via-[#6ba46a] to-[#5b945a]", wide: true },
+  { label: "Annadanam Food Distribution", gradient: "from-[#e8d5b7] via-[#d4a574] to-[#c89b6e]", wide: true },
+  { label: "Devotees Gathering", gradient: "from-[#c4917b] via-[#b4816b] to-[#a4715b]", wide: false },
+  { label: "Spiritual Event", gradient: "from-[#a8c4d4] via-[#88a4b4] to-[#6884a4]", wide: false },
+  { label: "Community Service", gradient: "from-[#7a8b6f] via-[#5a6b4f] to-[#4a5b3f]", wide: false },
+  { label: "Ravi Swamy Blessings", gradient: "from-[#e8c87b] via-[#d4a84c] to-[#c09030]", wide: true },
 ];
 
 export default function Gallery() {
   const [ref, vis] = useInView();
 
   return (
-    <section id="gallery" className="bg-cream-50 py-24 px-6">
+    <section id="gallery" className="bg-cream-200 py-24 px-6">
       <div ref={ref} className="max-w-[1100px] mx-auto">
         {vis && (
           <>
@@ -27,6 +27,9 @@ export default function Gallery() {
                 Gallery
               </h2>
               <OmDivider />
+              <p className="font-body text-[17px] text-earth-400 max-w-[500px] mx-auto mt-5 leading-[1.8]">
+                Glimpses of seva, devotion, and compassion in action.
+              </p>
             </div>
 
             {/* Grid */}
@@ -44,7 +47,7 @@ export default function Gallery() {
 
                   {/* Watermark */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-[48px] text-white/[0.12]">☸</span>
+                    <span className="text-[48px] text-white/[0.15]">🪷</span>
                   </div>
 
                   {/* Hover overlay */}

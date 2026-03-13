@@ -1,82 +1,94 @@
 "use client";
 import { useInView } from "./useInView";
 import OmDivider from "./OmDivider";
+import { useState, useEffect, useRef } from "react";
 
-const TESTIMONIALS = [
-  {
-    quote:
-      "Babaji's blessings transformed my life completely. I found a peace I never knew existed within me.",
-    name: "Priya Sharma",
-    loc: "Delhi",
-  },
-  {
-    quote:
-      "I found peace and clarity through Babaji's guidance. His words continue to illuminate my path every day.",
-    name: "Rajesh Kumar",
-    loc: "Mumbai",
-  },
-  {
-    quote:
-      "The ashram experience was life-changing. I left with a heart full of gratitude and a soul renewed.",
-    name: "Anita Devi",
-    loc: "Rishikesh",
-  },
+const STATS = [
+  { target: 25000, suffix: "+", label: "Meals Served", icon: "🍛" },
+  { target: 501, suffix: "+", label: "Devotees Served", icon: "🙏" },
+  { target: 1100, prefix: "₹", suffix: "", label: "Min. Annadanam Support", icon: "💛" },
+  { target: 50, suffix: "+", label: "Events Conducted", icon: "🪷" },
 ];
+
+function CountUp({ target, prefix = "", suffix = "", active }) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!active) return;
+    let start = 0;
+    const step = Math.ceil(target / 60);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { setCount(target); clearInterval(timer); }
+      else setCount(start);
+    }, 30);
+    return () => clearInterval(timer);
+  }, [active, target]);
+  return (
+    <span>{prefix}{count.toLocaleString("en-IN")}{suffix}</span>
+  );
+}
 
 export default function Testimonials() {
   const [ref, vis] = useInView();
 
   return (
     <section
-      id="testimonials"
-      className="py-24 px-6"
-      style={{ background: "linear-gradient(180deg, #FEFCF9 0%, #FDF8F0 100%)" }}
+      id="impact"
+      className="py-24 px-6 relative overflow-hidden"
+      style={{ background: "linear-gradient(135deg, #FDF8F0 0%, #F5EDE0 100%)" }}
     >
-      <div ref={ref} className="max-w-[1100px] mx-auto">
+      {/* Background decorative text */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+        <span className="text-[200px] font-display font-bold text-saffron-500/[0.03] select-none">
+          सेवा
+        </span>
+      </div>
+
+      <div ref={ref} className="max-w-[1100px] mx-auto relative z-10">
         {vis && (
           <>
             {/* Header */}
             <div className="animate-fade-in-up text-center mb-14">
               <p className="font-sans font-bold text-[13px] text-saffron-500 tracking-[3px] uppercase mb-3">
-                Devotee Experiences
+                Our Impact
               </p>
               <h2 className="font-display text-[clamp(2rem,3.5vw,2.8rem)] font-semibold text-earth-700 mb-5">
-                Voices of Transformation
+                Numbers That Reflect Seva
               </h2>
               <OmDivider />
+              <p className="font-body text-[17px] text-earth-400 max-w-[560px] mx-auto mt-5 leading-[1.8]">
+                Every number represents a life touched, a soul nourished, and compassion in action.
+              </p>
             </div>
 
-            {/* Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {TESTIMONIALS.map((t, i) => (
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {STATS.map((stat, i) => (
                 <div
-                  key={t.name}
-                  className={`animate-fade-in-up delay-${(i + 1) * 100} bg-white rounded-2xl p-9 relative border border-saffron-500/[0.06] shadow-[0_4px_24px_rgba(61,43,31,0.06)] hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(212,119,44,0.1)] transition-all duration-400`}
+                  key={stat.label}
+                  className={`animate-fade-in-up delay-${(i + 1) * 100} bg-white rounded-2xl p-8 text-center border border-saffron-500/10 shadow-[0_4px_24px_rgba(61,43,31,0.06)] hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(212,119,44,0.1)] transition-all duration-400 relative overflow-hidden`}
                 >
-                  {/* Quote mark */}
-                  <span className="font-display text-[56px] text-saffron-500/15 absolute top-4 left-6 leading-none">
-                    &ldquo;
-                  </span>
-
-                  <p className="font-body text-base leading-[1.8] text-earth-500 italic mb-6 pt-5">
-                    {t.quote}
+                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-saffron-500 to-gold-500" />
+                  <div className="text-[36px] mb-3">{stat.icon}</div>
+                  <p className="font-display font-bold text-[clamp(1.8rem,3vw,2.5rem)] text-saffron-500 mb-2">
+                    <CountUp target={stat.target} prefix={stat.prefix || ""} suffix={stat.suffix} active={vis} />
                   </p>
-
-                  <div className="flex items-center gap-3">
-                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-saffron-500 to-gold-500 flex items-center justify-center text-white font-sans font-bold text-base">
-                      {t.name.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-sans font-bold text-[15px] text-earth-700">
-                        {t.name}
-                      </p>
-                      <p className="font-sans text-[13px] text-earth-400">
-                        {t.loc}
-                      </p>
-                    </div>
-                  </div>
+                  <p className="font-sans text-[13px] text-earth-400 tracking-wide leading-tight">{stat.label}</p>
                 </div>
               ))}
+            </div>
+
+            {/* Quote */}
+            <div className="mt-12 text-center">
+              <div className="inline-block bg-white rounded-2xl px-8 py-6 border border-saffron-500/10 shadow-[0_4px_24px_rgba(61,43,31,0.06)] max-w-[600px]">
+                <span className="font-display text-[48px] text-saffron-500/20 leading-none block -mb-4">&ldquo;</span>
+                <p className="font-display text-[20px] italic text-earth-600 leading-[1.6]">
+                  Manava Seva is Madhava Seva — Service to humanity is service to God.
+                </p>
+                <p className="font-sans text-[13px] text-saffron-500 font-bold tracking-wide mt-3 uppercase">
+                  — Ravi Swamy Foundation
+                </p>
+              </div>
             </div>
           </>
         )}

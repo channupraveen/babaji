@@ -4,9 +4,11 @@ import About from "@/components/About";
 import Teachings from "@/components/Teachings";
 import VisitAshram from "@/components/VisitAshram";
 import Programs from "@/components/Programs";
-import Donations from "@/components/Donations";
 import Testimonials from "@/components/Testimonials";
+import Donations from "@/components/Donations";
+import Events from "@/components/Events";
 import Gallery from "@/components/Gallery";
+import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -18,9 +20,11 @@ export default function Home() {
       <Teachings />
       <VisitAshram />
       <Programs />
-      <Donations />
       <Testimonials />
+      <Donations />
+      <Events />
       <Gallery />
+      <Contact />
       <Footer />
     </main>
   );

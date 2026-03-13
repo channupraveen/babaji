@@ -2,30 +2,30 @@
 import { useInView } from "./useInView";
 import OmDivider from "./OmDivider";
 
-const PROGRAMS = [
+const SERVICES = [
   {
-    icon: "🧘‍♂️",
-    title: "Meditation Sessions",
-    desc: "Daily guided meditation for inner stillness, clarity of mind, and connection with the divine presence.",
-    time: "Daily · 5:30 AM & 6:00 PM",
+    icon: "🍛",
+    title: "Annadanam",
+    desc: "Providing nutritious meals to the hungry with devotion and compassion. Every meal is an act of worship.",
+    highlights: ["Daily food distribution", "Festival Annadanam", "Mass feeding programs"],
+    color: "from-saffron-500/10 to-gold-500/5",
+    accent: "border-saffron-500/20",
   },
   {
-    icon: "🏔️",
-    title: "Spiritual Retreats",
-    desc: "Multi-day immersive retreats in the ashram for deep spiritual practice and transformation.",
-    time: "Monthly · 3-7 Days",
+    icon: "🪷",
+    title: "Spiritual Programs",
+    desc: "Guidance, discourses, and cultural programs to promote spiritual awareness and inner growth.",
+    highlights: ["Spiritual discourses", "Cultural programs", "Meditation sessions"],
+    color: "from-earth-400/10 to-earth-500/5",
+    accent: "border-earth-400/20",
   },
   {
-    icon: "🧎",
-    title: "Yoga Programs",
-    desc: "Classical yoga practices to harmonize body, mind, and spirit through ancient techniques.",
-    time: "Daily · 6:00 AM",
-  },
-  {
-    icon: "🤝",
-    title: "Community Service",
-    desc: "Join seva programs to serve local communities, feed the hungry, and uplift those in need.",
-    time: "Weekly · Saturdays",
+    icon: "🤲",
+    title: "Social Service",
+    desc: "Helping communities through charitable initiatives, supporting poor families and spreading harmony.",
+    highlights: ["Community welfare", "Supporting poor families", "Volunteer programs"],
+    color: "from-gold-500/10 to-saffron-400/5",
+    accent: "border-gold-500/20",
   },
 ];
 
@@ -33,44 +33,68 @@ export default function Programs() {
   const [ref, vis] = useInView();
 
   return (
-    <section id="programs" className="bg-cream-100 py-24 px-6">
+    <section id="services" className="bg-cream-100 py-24 px-6">
       <div ref={ref} className="max-w-[1100px] mx-auto">
         {vis && (
           <>
             {/* Header */}
             <div className="animate-fade-in-up text-center mb-14">
               <p className="font-sans font-bold text-[13px] text-saffron-500 tracking-[3px] uppercase mb-3">
-                Programs & Activities
+                What We Do
               </p>
               <h2 className="font-display text-[clamp(2rem,3.5vw,2.8rem)] font-semibold text-earth-700 mb-5">
-                Begin Your Sacred Journey
+                Our Services
               </h2>
               <OmDivider />
+              <p className="font-body text-[17px] text-earth-400 max-w-[600px] mx-auto mt-5 leading-[1.8]">
+                Three pillars of service through which Ravi Swamy Foundation touches lives
+                and spreads the spirit of compassion and devotion.
+              </p>
             </div>
 
-            {/* Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {PROGRAMS.map((p, i) => (
+            {/* Service Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {SERVICES.map((s, i) => (
                 <div
-                  key={p.title}
-                  className={`animate-fade-in-up delay-${(i + 1) * 100} bg-white rounded-2xl p-9 flex gap-5 items-start border border-saffron-500/[0.06] shadow-[0_4px_24px_rgba(61,43,31,0.06)] hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(212,119,44,0.1)] transition-all duration-400 cursor-default`}
+                  key={s.title}
+                  className={`animate-fade-in-up delay-${(i + 1) * 100} bg-white rounded-2xl p-8 relative overflow-hidden border ${s.accent} shadow-[0_4px_24px_rgba(61,43,31,0.06)] hover:-translate-y-2 hover:shadow-[0_16px_40px_rgba(212,119,44,0.12)] transition-all duration-400 cursor-default`}
                 >
-                  <div className="w-[60px] h-[60px] rounded-2xl shrink-0 flex items-center justify-center text-[28px] bg-gradient-to-br from-saffron-500/[0.08] to-gold-500/[0.08]">
-                    {p.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-display text-xl font-semibold text-earth-700 mb-2">
-                      {p.title}
+                  {/* Background gradient */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${s.color}`} />
+                  {/* Top accent line */}
+                  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-saffron-500 to-gold-500" />
+
+                  <div className="relative z-10">
+                    <div className="w-[68px] h-[68px] rounded-2xl mb-5 flex items-center justify-center text-[32px] bg-white shadow-[0_4px_16px_rgba(61,43,31,0.08)]">
+                      {s.icon}
+                    </div>
+                    <h3 className="font-display text-[22px] font-semibold text-earth-700 mb-3">
+                      {s.title}
                     </h3>
-                    <p className="font-body text-[15px] leading-[1.7] text-earth-400 mb-3">
-                      {p.desc}
+                    <p className="font-body text-[15px] leading-[1.7] text-earth-400 mb-5">
+                      {s.desc}
                     </p>
-                    <span className="text-[13px] font-sans font-bold text-saffron-500 tracking-wide">
-                      {p.time}
-                    </span>
+                    <div className="space-y-2">
+                      {s.highlights.map((h) => (
+                        <div key={h} className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-saffron-500 shrink-0" />
+                          <span className="font-sans text-[13px] text-earth-500 font-semibold">{h}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* CTA */}
+            <div className="text-center mt-12">
+              <a
+                href="#donate"
+                className="inline-block px-10 py-4 rounded-full bg-gradient-to-br from-saffron-500 to-saffron-600 text-white font-sans font-bold text-[15px] no-underline shadow-[0_4px_20px_rgba(212,119,44,0.35)] hover:-translate-y-0.5 hover:shadow-[0_8px_28px_rgba(212,119,44,0.45)] transition-all duration-300"
+              >
+                Support Our Services
+              </a>
             </div>
           </>
         )}
