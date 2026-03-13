@@ -5,7 +5,8 @@
       "WebFetch(domain:www.pexels.com)",
       "mcp__Claude_Preview__preview_start",
       "Bash(npm run:*)",
-      "Bash(where npm:*)"
+      "Bash(where npm:*)",
+      "Bash(grep -n 'href=\"\"\"\"#' /c/Users/pk055/Desktop/babaji/src/components/*.js)"
     ]
   }
 }
