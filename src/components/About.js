@@ -68,14 +68,14 @@ export default function About() {
                 >
                   <div className={`absolute inset-0 bg-gradient-to-br ${card.color} opacity-50`} />
                   <div className="relative z-10">
-                    <div className="w-full h-[180px] rounded-xl mb-5 overflow-hidden relative"
+                    <div className="w-full aspect-square rounded-xl mb-5 overflow-hidden relative"
                       style={{ background: "linear-gradient(135deg, #F5EDE0, #E8D5B7)" }}
                     >
                       <Image
                         src={i === 0 ? "/image-42.jpg" : i === 1 ? "/image-48.jpg" : "/babaji.jpeg"}
                         alt={card.title}
                         fill
-                        className="object-cover object-top"
+                        className="object-contain object-center"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-earth-700/30 to-transparent" />
                     </div>
