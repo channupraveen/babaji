@@ -44,8 +44,8 @@ export default function Contact() {
                   {
                     icon: "📍",
                     title: "Location",
-                    content: "Kalaburagi, Karnataka",
-                    sub: "Come visit us at our center",
+                    content: "Sri Kshetra Ganagapur",
+                    sub: "Ganagapur Dattatreya Temple, Karnataka",
                   },
                   {
                     icon: "📧",

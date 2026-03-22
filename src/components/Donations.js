@@ -6,6 +6,13 @@ import OmDivider from "./OmDivider";
 
 const TIERS = [
   {
+    amount: "₹100",
+    label: "Small Seva",
+    desc: "Every small contribution counts — offer a humble seva to the mission.",
+    icon: "🙏",
+    popular: false,
+  },
+  {
     amount: "₹500",
     label: "Feed a Devotee",
     desc: "Sponsor one meal for a devotee or pilgrim during Annadanam.",

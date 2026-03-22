@@ -9,6 +9,7 @@ const QUICK_LINKS = [
 ];
 
 const DONATION_LINKS = [
+  { label: "₹100 — Small Seva", href: "#donate" },
   { label: "₹500 — Feed a Devotee", href: "#donate" },
   { label: "₹1100 — Annadanam Seva", href: "#donate" },
   { label: "₹5000 — Sponsor Meals", href: "#donate" },
@@ -119,7 +120,7 @@ export default function Footer() {
               Contact
             </h4>
             <p className="text-[15px] text-white/50 font-sans mb-2.5">
-              📍 Kalaburagi, Karnataka, India
+              📍 Sri Kshetra Ganagapur, Karnataka, India
             </p>
             <p className="text-[15px] text-white/50 font-sans mb-2.5">
               📧 info@raviswamyfoundation.org
